@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PengumumanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home', function () {
-    return view('home');
-});
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[PengumumanController::class, 'index']);
+Route::get('/home',[PengumumanController::class, 'home']);
+Route::get('/home/category/{category}',[PengumumanController::class, 'category']);
+Route::get('/home/{id}',[PengumumanController::class, 'show']);
