@@ -45,4 +45,16 @@ class User extends Authenticatable
     public function pengumumans(){
         return $this->hasMany(Pengumuman::class);
     }
+    public function beasiswas(){
+        return $this->hasMany(Beasiswa::class);
+    }
+    public function dispensasis(){
+        return $this->hasMany(Dispensasi::class);
+    }
+    public function KKMs(){
+        return $this->hasMany(KKM::class);
+    }
+    public function PKMs(){
+        return $this->hasMany(PKM::class);
+    }
 }

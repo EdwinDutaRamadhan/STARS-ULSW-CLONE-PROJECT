@@ -17,7 +17,15 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'edwin',
             'email' => 'edwin@gmail.com',
-            'password' => 'edwin'
+            'password' => 'edwin',
+            'role' => 'Admin-Master'
+        ]);
+        User::create([
+            'name' => 'mahasiswa',
+            'email' => 'mahasiswa@gmail.com',
+            'progdi' => 'Teknik Informatika',
+            'password' => 'mahasiswa',
+            'role' => 'Mahasiswa'
         ]);
     }
 }
