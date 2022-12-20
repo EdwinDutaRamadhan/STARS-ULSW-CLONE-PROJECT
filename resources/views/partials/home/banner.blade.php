@@ -1,5 +1,5 @@
 <section class="py-5 text-center container-fluid" style="background-image : url({{ asset('/img/bg.png') }});">
-    <div class="row py-lg-5">
+    <div class="row py-lg-5" style="min-height: 25rem;">
         <div class="col-lg-6 col-md-8 mx-auto">
             <h1 class="fw-light">Album example</h1>
             <p class="lead text-muted">Something short and leading about the collection below—its contents, the

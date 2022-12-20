@@ -5,6 +5,7 @@
 <body>
     <main>
         {{-- Banner --}}
+        @include('partials.nav-home')
         @include('partials.home.banner')
 
         <div class="album py-5 bg-light">

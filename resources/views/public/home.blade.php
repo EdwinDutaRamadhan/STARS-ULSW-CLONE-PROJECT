@@ -6,7 +6,7 @@
     <main>
         {{-- Banner --}}
         @include('partials.home.banner')
-
+        @include('partials.nav-home')
         <div class="album py-5 bg-light">
             <div class="container">
                 <div class="d-flex justify-content-between">

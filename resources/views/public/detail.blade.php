@@ -6,7 +6,7 @@
     <body>
         {{-- Banner --}}
         @include('partials.home.banner')
-
+        @include('partials.nav-home')
         <div class=" mt-5">
             <img src="{{ $data->image }}" alt="not found" class="img-fluid w-100">
         </div>

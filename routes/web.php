@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PengumumanController;
 
 /*
@@ -18,3 +19,5 @@ Route::get('/',[PengumumanController::class, 'index']);
 Route::get('/home',[PengumumanController::class, 'home']);
 Route::get('/home/category/{category}',[PengumumanController::class, 'category']);
 Route::get('/home/{id}',[PengumumanController::class, 'show']);
+
+Route::resource('/home/mahasiswa', MahasiswaController::class)->middleware('guest');
