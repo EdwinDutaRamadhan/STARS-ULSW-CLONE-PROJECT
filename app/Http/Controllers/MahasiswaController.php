@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use App\Models\Beasiswa;
+use App\Models\Dispensasi;
+use App\Models\KKM;
+use App\Models\PKM;
 class MahasiswaController extends Controller
 {
     /**
@@ -13,7 +17,38 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        //
+        if (Auth::user()) {
+            $role = Auth::user()->role;
+            switch ($role) {
+                case 'Admin-Master':
+                    # code...
+                    break;
+                case 'Admin-Beasiswa':
+                    # code...
+                    break;
+                case 'Admin-Dispensasi':
+                    # code...
+                    break;
+                case 'Admin-PKM':
+                    # code...
+                    break;
+                case 'Admin-KKM':
+                    # code...
+                    break;
+                case 'Mahasiswa':
+                    return redirect('home/mahasiswa/dashboard');
+                    break;
+                case 'Dosen':
+                    # code...
+                    break;
+
+                default:
+                    # code...
+                    break;
+            }
+        }else{
+            return redirect('/home/mahasiswa/login');
+        }
     }
 
     /**
@@ -34,7 +69,17 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //@ddd($request);
+        $credentials = $request->validate([
+            'nim' => 'required|max:9',
+            'password' => 'required'
+        ]);
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect('/home/mahasiswa/dashboard');
+        }
+        return back()->with('login', 'username atau password salah!');
     }
 
     /**
@@ -43,13 +88,28 @@ class MahasiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($mahasiswa)
     {
-        switch ($id) {
+        switch ($mahasiswa) {
             case 'login':
                 return view('auth.login-mahasiswa');
                 break;
-            
+            case 'dashboard':
+                $OMB = 0;
+                $dataOMB = KKM::where('kelompok', 'OMB')->get();
+                foreach($dataOMB as $d){
+                    $OMB += $d['poin'];
+                }
+                return view('public.mahasiswa.dashboard', [
+                    'module' => $mahasiswa,
+                    'kegiatan' => count(KKM::all()),
+                    'dispensasi' => count(Dispensasi::all()),
+                    'beasiswa' => count(Beasiswa::all()),
+                    'pkm' => count(PKM::all()),
+                    'OMB' => $OMB
+                ]);
+                break;
+
             default:
                 # code...
                 break;

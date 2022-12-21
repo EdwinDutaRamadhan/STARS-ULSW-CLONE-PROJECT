@@ -16,15 +16,15 @@ class UserSeeder extends Seeder
     {
         User::create([
             'name' => 'edwin',
-            'email' => 'edwin@gmail.com',
-            'password' => 'edwin',
+            'nim' => '672020272',
+            'password' => '$2y$10$nX.iVs7Ua0p0N3e34hQLxuwuMmVNhoeWKTGSZBeWl/exuXl9LyQVO',
             'role' => 'Admin-Master'
         ]);
         User::create([
             'name' => 'mahasiswa',
-            'email' => 'mahasiswa@gmail.com',
+            'nim' => '682020272',
             'progdi' => 'Teknik Informatika',
-            'password' => 'mahasiswa',
+            'password' => '$2y$10$nX.iVs7Ua0p0N3e34hQLxuwuMmVNhoeWKTGSZBeWl/exuXl9LyQVO',
             'role' => 'Mahasiswa'
         ]);
     }

@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
+use App\Models\PKM;
 class PKMSeeder extends Seeder
 {
     /**
@@ -14,6 +14,6 @@ class PKMSeeder extends Seeder
      */
     public function run()
     {
-        //
+        
     }
 }

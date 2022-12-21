@@ -20,4 +20,4 @@ Route::get('/home',[PengumumanController::class, 'home']);
 Route::get('/home/category/{category}',[PengumumanController::class, 'category']);
 Route::get('/home/{id}',[PengumumanController::class, 'show']);
 
-Route::resource('/home/mahasiswa', MahasiswaController::class)->middleware('guest');
+Route::resource('/home/mahasiswa', MahasiswaController::class);
