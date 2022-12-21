@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             BeasiswaSeeder::class,
             KKMSeeder::class,
+            KKMCategorySeeder::class,
+            UserInfoSeeder::class,
         ]);
         
     }

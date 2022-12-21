@@ -23,7 +23,6 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'mahasiswa',
             'nim' => '682020272',
-            'progdi' => 'Teknik Informatika',
             'password' => '$2y$10$nX.iVs7Ua0p0N3e34hQLxuwuMmVNhoeWKTGSZBeWl/exuXl9LyQVO',
             'role' => 'Mahasiswa'
         ]);

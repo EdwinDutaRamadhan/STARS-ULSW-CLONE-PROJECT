@@ -13,18 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('k_k_m_s', function (Blueprint $table) {
+        Schema::create('user_infos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('k_k_m_category_id');
-            $table->string('link');
-            $table->string('catatan');
-            $table->boolean('valid');
-            $table->integer('poin');
-            $table->string('kegiatan');
-            $table->string('rumpun');
-            $table->string('jenis');
-            $table->string('kelompok');
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('telp')->nullable();
+            $table->string('bank')->nullable();
+            $table->string('norek')->nullable();
+            $table->string('pemilik')->nullable();
+            $table->string('progdi')->nullable();
             $table->timestamps();
         });
     }
@@ -36,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('k_k_m_s');
+        Schema::dropIfExists('user_infos');
     }
 };

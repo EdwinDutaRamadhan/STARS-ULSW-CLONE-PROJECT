@@ -18,7 +18,7 @@
             <a class="nav-link ms-2" href="#">KKM</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link ms-2" href="#">Profile</a>
+            <a class="nav-link ms-2" data-bs-toggle="modal" data-bs-target="#profile"  href="profile">Profile</a>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">

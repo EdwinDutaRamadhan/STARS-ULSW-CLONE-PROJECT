@@ -8,6 +8,8 @@ use App\Models\Beasiswa;
 use App\Models\Dispensasi;
 use App\Models\KKM;
 use App\Models\PKM;
+use App\Models\User;
+
 class MahasiswaController extends Controller
 {
     /**
@@ -46,7 +48,7 @@ class MahasiswaController extends Controller
                     # code...
                     break;
             }
-        }else{
+        } else {
             return redirect('/home/mahasiswa/login');
         }
     }
@@ -97,10 +99,12 @@ class MahasiswaController extends Controller
             case 'dashboard':
                 $OMB = 0;
                 $dataOMB = KKM::where('kelompok', 'OMB')->get();
-                foreach($dataOMB as $d){
+                foreach ($dataOMB as $d) {
                     $OMB += $d['poin'];
                 }
+                $userId = Auth::user()->id;
                 return view('public.mahasiswa.dashboard', [
+                    'profile' => User::find($userId)->info,
                     'module' => $mahasiswa,
                     'kegiatan' => count(KKM::all()),
                     'dispensasi' => count(Dispensasi::all()),

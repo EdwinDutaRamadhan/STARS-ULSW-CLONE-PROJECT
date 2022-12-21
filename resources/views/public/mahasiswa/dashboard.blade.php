@@ -69,6 +69,7 @@
                 </table>
             </div>
         </div>
-        
+
     </div>
+    @include('partials.mahasiswa.modal')
 @endsection
