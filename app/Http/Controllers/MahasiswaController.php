@@ -17,28 +17,17 @@ class MahasiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($role)
     {
         if (Auth::user()) {
-            $role = Auth::user()->role;
             switch ($role) {
-                case 'Admin-Master':
-                    # code...
-                    break;
-                case 'Admin-Beasiswa':
-                    # code...
-                    break;
-                case 'Admin-Dispensasi':
-                    # code...
-                    break;
-                case 'Admin-PKM':
-                    # code...
-                    break;
-                case 'Admin-KKM':
-                    # code...
-                    break;
                 case 'Mahasiswa':
-                    return redirect('home/mahasiswa/dashboard');
+                    if(Auth::user()->role == 'Mahasiswa'){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                    
                     break;
                 case 'Dosen':
                     # code...
@@ -49,7 +38,7 @@ class MahasiswaController extends Controller
                     break;
             }
         } else {
-            return redirect('/home/mahasiswa/login');
+            return false;
         }
     }
 
@@ -92,34 +81,43 @@ class MahasiswaController extends Controller
      */
     public function show($mahasiswa)
     {
-        switch ($mahasiswa) {
-            case 'login':
-                return view('auth.login-mahasiswa');
-                break;
-            case 'dashboard':
-                $OMB = 0;
-                $dataOMB = KKM::where('kelompok', 'OMB')->get();
-                foreach ($dataOMB as $d) {
-                    $OMB += $d['poin'];
-                }
-                $userId = Auth::user()->id;
-                return view('public.mahasiswa.dashboard', [
-                    'profile' => User::find($userId)->info,
-                    'module' => $mahasiswa,
-                    'kegiatan' => count(KKM::all()),
-                    'dispensasi' => count(Dispensasi::all()),
-                    'beasiswa' => count(Beasiswa::all()),
-                    'pkm' => count(PKM::all()),
-                    'OMB' => $OMB
-                ]);
-                break;
-
-            default:
-                # code...
-                break;
+        if ($this->index('Mahasiswa')) {
+            $userId = Auth::user()->id;
+            switch ($mahasiswa) {
+                case 'login':
+                    return view('auth.login-mahasiswa');
+                    break;
+                case 'dashboard':
+                    $OMB = 0;
+                    $dataOMB = KKM::where('kelompok', 'OMB')->get();
+                    foreach ($dataOMB as $d) {
+                        $OMB += $d['poin'];
+                    }
+                    return view('public.mahasiswa.dashboard', [
+                        'module' => 'Dashboard Mahasiswa',
+                        'profile' => User::find($userId)->info,
+                        'kegiatan' => count(KKM::all()),
+                        'dispensasi' => count(Dispensasi::all()),
+                        'beasiswa' => count(Beasiswa::all()),
+                        'pkm' => count(PKM::all()),
+                        'OMB' => $OMB
+                    ]);
+                    break;
+                case 'kkm' :
+                    return view('public.mahasiswa.dashboard',[
+                        'module' => 'Kredit Keaktifan Mahasiswa',
+                        'profile' => User::find($userId)->info,
+                        'data' => KKM::where('user_id',$userId)->paginate(10)
+                    ]);
+                    break;
+                default:
+                    # code...
+                    break;
+            }
+        } else {
+            return redirect('/home/mahasiswa/login');
         }
     }
-
     /**
      * Show the form for editing the specified resource.
      *
