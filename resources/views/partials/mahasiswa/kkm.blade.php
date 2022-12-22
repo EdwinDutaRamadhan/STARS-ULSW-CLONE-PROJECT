@@ -1,4 +1,4 @@
-<div class="m-2">
+<div class="m-2 table-responsive">
     <table id="dtHorizontalExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
         <thead>
             <tr class="text-center text-muted">
@@ -19,7 +19,7 @@
             <?php $no++; ?>
                 <tr class="text-center text-muted">
                     <td>{{ $no }}</td>
-                    <td><a href=""><i class="btn btn-primary btn-sm bi bi-eye-fill"></i></a></td>
+                    <td><a href="{{ $d->link }}"><i class="btn btn-primary btn-sm bi bi-eye-fill"></i></a></td>
                     <td>{{ $d->catatan }}</td>
                     <td>{{ ($d->valid == 1)? "Valid" : "Invalid"; }}</td>
                     <td>{{ $d->poin }}</td>

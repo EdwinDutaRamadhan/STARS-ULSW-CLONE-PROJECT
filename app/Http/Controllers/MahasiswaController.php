@@ -103,6 +103,26 @@ class MahasiswaController extends Controller
                         'OMB' => $OMB
                     ]);
                     break;
+                case 'dispensasi' :
+                    return view('public.mahasiswa.dashboard',[
+                        'module' => 'History Dispensasi',
+                        'profile' => User::find($userId)->info,
+                        'data' => Dispensasi::where('user_id',$userId)->paginate(10)
+                    ]);
+                    break;
+                case 'beasiswa' :
+                    return view('public.mahasiswa.dashboard',[
+                        'module' => 'History Beasiswa',
+                        'profile' => User::find($userId)->info,
+                        'data' => Beasiswa::where('user_id',$userId)->paginate(10)
+                    ]);
+                    break;
+                case 'pkm' :
+                    return view('public.mahasiswa.dashboard',[
+                        'module' => 'PKM',
+                        'profile' => User::find($userId)->info,
+                        'data' => PKM::where('user_id',$userId)->paginate(10)
+                    ]);
                 case 'kkm' :
                     return view('public.mahasiswa.dashboard',[
                         'module' => 'Kredit Keaktifan Mahasiswa',
@@ -115,7 +135,7 @@ class MahasiswaController extends Controller
                     break;
             }
         } else {
-            return redirect('/home/mahasiswa/login');
+            return view('auth.login-mahasiswa');
         }
     }
     /**

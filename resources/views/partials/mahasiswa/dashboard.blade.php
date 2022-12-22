@@ -1,4 +1,4 @@
-<div class="row p-2">
+<div class="row p-2 justify-content-center">
     <div class="col-md-3">
         <div class="card bg-primary">
             <div class="card-body text-succes">
