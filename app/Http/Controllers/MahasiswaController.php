@@ -22,12 +22,12 @@ class MahasiswaController extends Controller
         if (Auth::user()) {
             switch ($role) {
                 case 'Mahasiswa':
-                    if(Auth::user()->role == 'Mahasiswa'){
+                    if (Auth::user()->role == 'Mahasiswa') {
                         return true;
-                    }else{
+                    } else {
                         return false;
                     }
-                    
+
                     break;
                 case 'Dosen':
                     # code...
@@ -87,47 +87,68 @@ class MahasiswaController extends Controller
                 case 'login':
                     return view('auth.login-mahasiswa');
                     break;
+                case 'logout':
+                    Auth::logout();
+                    session()->invalidate();
+                    session()->regenerateToken();
+                    return redirect('/home/mahasiswa/login');
+                    break;
                 case 'dashboard':
-                    $OMB = 0;
-                    $dataOMB = KKM::where('kelompok', 'OMB')->get();
+                    $OMB = 0;$KProfesional = 0;$KBP = 0;$KPenunjang = 0;
+                    $dataOMB = KKM::where('user_id', $userId)->where('k_k_m_category_id', 1)->get();
                     foreach ($dataOMB as $d) {
                         $OMB += $d['poin'];
+                    }
+                    $dataKProfesional = KKM::where('user_id', $userId)->where('k_k_m_category_id', 2)->get();
+                    foreach ($dataKProfesional as $d) {
+                        $KProfesional += $d['poin'];
+                    }
+                    $dataKBP = KKM::where('user_id', $userId)->where('k_k_m_category_id', 3)->get();
+                    foreach ($dataKBP as $d) {
+                        $KBP += $d['poin'];
+                    }
+                    $dataKPenunjang = KKM::where('user_id', $userId)->where('k_k_m_category_id', 4)->get();
+                    foreach ($dataKPenunjang as $d) {
+                        $KPenunjang += $d['poin'];
                     }
                     return view('public.mahasiswa.dashboard', [
                         'module' => 'Dashboard Mahasiswa',
                         'profile' => User::find($userId)->info,
-                        'kegiatan' => count(KKM::all()),
-                        'dispensasi' => count(Dispensasi::all()),
-                        'beasiswa' => count(Beasiswa::all()),
-                        'pkm' => count(PKM::all()),
-                        'OMB' => $OMB
+                        'kegiatan' => count(KKM::where('user_id', $userId)->get()),
+                        'dispensasi' => count(Dispensasi::where('user_id', $userId)->get()),
+                        'beasiswa' => count(Beasiswa::where('user_id', $userId)->get()),
+                        'pkm' => count(PKM::where('user_id', $userId)->get()),
+                        'OMB' => $OMB,
+                        'KProfesional' => $KProfesional,
+                        'KBP' => $KBP,
+                        'KPenunjang' => $KPenunjang,
                     ]);
                     break;
-                case 'dispensasi' :
-                    return view('public.mahasiswa.dashboard',[
+                case 'dispensasi':
+                    return view('public.mahasiswa.dashboard', [
                         'module' => 'History Dispensasi',
                         'profile' => User::find($userId)->info,
-                        'data' => Dispensasi::where('user_id',$userId)->paginate(10)
+                        'data' => Dispensasi::where('user_id', $userId)->paginate(10)
                     ]);
                     break;
-                case 'beasiswa' :
-                    return view('public.mahasiswa.dashboard',[
+                case 'beasiswa':
+                    return view('public.mahasiswa.dashboard', [
                         'module' => 'History Beasiswa',
                         'profile' => User::find($userId)->info,
-                        'data' => Beasiswa::where('user_id',$userId)->paginate(10)
+                        'data' => Beasiswa::where('user_id', $userId)->paginate(10)
                     ]);
                     break;
-                case 'pkm' :
-                    return view('public.mahasiswa.dashboard',[
+                case 'pkm':
+                    return view('public.mahasiswa.dashboard', [
                         'module' => 'PKM',
                         'profile' => User::find($userId)->info,
-                        'data' => PKM::where('user_id',$userId)->paginate(10)
+                        'data' => PKM::where('user_id', $userId)->paginate(10)
                     ]);
-                case 'kkm' :
-                    return view('public.mahasiswa.dashboard',[
+                case 'kkm':
+                    return view('public.mahasiswa.dashboard', [
                         'module' => 'Kredit Keaktifan Mahasiswa',
                         'profile' => User::find($userId)->info,
-                        'data' => KKM::where('user_id',$userId)->paginate(10)
+                        'data' => KKM::where('user_id', $userId)->paginate(10)
                     ]);
                     break;
                 default:

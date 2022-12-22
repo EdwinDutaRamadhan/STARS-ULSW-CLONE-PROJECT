@@ -48,17 +48,17 @@
         <tr>
             <td>Keterampilan Profesional</td>
             <td>300</td>
-            <td>0</td>
+            <td>{{ $KProfesional }}</td>
         </tr>
         <tr>
             <td>Keterampilan Bersifat Kemanusiaan</td>
             <td>250</td>
-            <td>0</td>
+            <td>{{ $KBP }}</td>
         </tr>
         <tr>
             <td>Keterampilan Penunjang</td>
             <td>0</td>
-            <td>0</td>
+            <td>{{ $KPenunjang }}</td>
         </tr>
     </table>
 </div>
