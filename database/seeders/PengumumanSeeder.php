@@ -71,11 +71,11 @@ class PengumumanSeeder extends Seeder
 
         foreach ($tb_mahasiswa as $tb) {
             Pengumuman::create([
-                'user_id' => $tb['user_id'],
+                'user_id' => 1000,
                 'category_id' => $tb['category_id'],
                 'title' => $tb['title'], 
                 'subtitle' => $tb['subtitle'], 
-                'category' => $tb['category'],
+                // 'category' => $tb['category'],
                 'type' => $tb['type'],
                 'description' => $tb['description'],
                 'image' => $tb['image'],

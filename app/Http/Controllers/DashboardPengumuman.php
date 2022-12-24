@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pengumuman;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-class LoginController extends Controller
+
+class DashboardPengumuman extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,23 +14,11 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('auth.login-admin');
-    }
-
-    public function authenticate(Request $request){
-        //@dd($request);
-        $credentials = $request->validate([
-            'nim' => 'required|max:9',
-            'password' => 'required'
+        return view('admin.pengumuman.index', [
+            'data' => Pengumuman::all()
         ]);
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-
-            return redirect()->intended('/admin/dashboard/pengumuman');
-        }
-        return back()->with('login', 'username atau password salah!');
     }
-  
+
     /**
      * Show the form for creating a new resource.
      *
@@ -48,16 +37,16 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Pengumuman  $pengumuman
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Pengumuman $pengumuman)
     {
         //
     }
@@ -65,10 +54,10 @@ class LoginController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Pengumuman  $pengumuman
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Pengumuman $pengumuman)
     {
         //
     }
@@ -77,10 +66,10 @@ class LoginController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Pengumuman  $pengumuman
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Pengumuman $pengumuman)
     {
         //
     }
@@ -88,10 +77,10 @@ class LoginController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Pengumuman  $pengumuman
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Pengumuman $pengumuman)
     {
         //
     }

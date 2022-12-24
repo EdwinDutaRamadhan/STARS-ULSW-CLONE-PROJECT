@@ -149,6 +149,7 @@ class UserSeeder extends Seeder
             ]);
         }
         User::create([
+            'id' => 1000,
             'name' => 'Dev Edwin',
             'nim' => '672020000',
             'password' => '$2y$10$nX.iVs7Ua0p0N3e34hQLxuwuMmVNhoeWKTGSZBeWl/exuXl9LyQVO',

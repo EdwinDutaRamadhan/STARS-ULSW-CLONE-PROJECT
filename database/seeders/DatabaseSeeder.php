@@ -30,6 +30,5 @@ class DatabaseSeeder extends Seeder
             KKMCategorySeeder::class,
             UserInfoSeeder::class,
         ]);
-        
     }
 }

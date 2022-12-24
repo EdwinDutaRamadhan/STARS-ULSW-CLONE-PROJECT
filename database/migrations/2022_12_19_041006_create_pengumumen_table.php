@@ -19,7 +19,6 @@ return new class extends Migration
             $table->foreignId('category_id');
             $table->string('title'); 
             $table->string('subtitle'); 
-            $table->string('category');
             $table->string('type');
             $table->text('description');
             $table->string('image');
