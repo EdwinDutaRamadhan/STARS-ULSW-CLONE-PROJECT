@@ -23,7 +23,6 @@
                     <th scope="col">Category</th>
                     <th scope="col">Title</th>
                     <th scope="col">tipe</th>
-                    <th scope="col">Desc</th>
                     <th scope="col" colspan="3">Action</th>
                 </tr>
             </thead>
@@ -35,10 +34,9 @@
                         <td>{{ $d->category->category }}</td>
                         <td>{{ $d->title }}</td>
                         <td>{{ $d->type }}</td>
-                        <td>{{ substr($d->description,0,20) }}</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a href="/admin/dashboard/pengumuman/{{ $d->id }}" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="bi bi-eye-fill"></i></a></td>
+                        <td><a href="/admin/dashboard/pengumuman/{{ $d->id }}" rel="noopener noreferrer" class="btn btn-warning btn-sm"><i class="bi bi-pen-fill"></i></a></td>
+                        <td><a href="/admin/dashboard/pengumuman/" rel="noopener noreferrer" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill"></i></a></td>
                     </tr>
                 @endforeach
             </tbody>

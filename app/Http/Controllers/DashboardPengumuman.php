@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pengumuman;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class DashboardPengumuman extends Controller
 {
@@ -12,12 +13,21 @@ class DashboardPengumuman extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function filter()
+    {
+        if (auth()->user()->role != 'Mahasiswa') {
+            return true;
+        } else {
+            return redirect()->route('home');
+        }
+    }
     public function index()
     {
         return view('admin.pengumuman.index', [
             'data' => Pengumuman::all()
         ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -48,7 +58,14 @@ class DashboardPengumuman extends Controller
      */
     public function show(Pengumuman $pengumuman)
     {
-        //
+        
+       if($this->filter()){
+        return view('admin.pengumuman.detail', [
+            'data' => Pengumuman::find($pengumuman->id)
+        ]);
+       }else{
+        return redirect('admin/dashboard/pengumuman');
+       }
     }
 
     /**
