@@ -15,11 +15,11 @@ class DashboardPengumuman extends Controller
      */
     public function filter()
     {
-        if (auth()->user()->role != 'Mahasiswa') {
-            return true;
-        } else {
-            return redirect()->route('home');
-        }
+        // if (auth()->user()->role != 'Mahasiswa') {
+        //     return true;
+        // } else {
+        //     return redirect()->route('home');
+        // }
     }
     public function index()
     {
@@ -36,7 +36,7 @@ class DashboardPengumuman extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pengumuman.add');
     }
 
     /**
@@ -59,7 +59,7 @@ class DashboardPengumuman extends Controller
     public function show(Pengumuman $pengumuman)
     {
         
-       if($this->filter()){
+       if(auth()->user()->role != 'Mahasiswa'){
         return view('admin.pengumuman.detail', [
             'data' => Pengumuman::find($pengumuman->id)
         ]);

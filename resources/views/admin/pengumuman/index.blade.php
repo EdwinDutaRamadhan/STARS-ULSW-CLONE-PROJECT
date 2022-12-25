@@ -4,7 +4,7 @@
         <h1 class="h2">Dashboard</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                <a href="{{ route('pengumuman.create') }}" class="btn btn-sm btn-outline-secondary">Tambah Pengumuman</a>
                 <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
             </div>
             <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
@@ -13,7 +13,7 @@
             </button>
         </div>
     </div>
-
+    
     <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
@@ -23,7 +23,7 @@
                     <th scope="col">Category</th>
                     <th scope="col">Title</th>
                     <th scope="col">tipe</th>
-                    <th scope="col" colspan="3">Action</th>
+                    <th scope="col" colspan="2">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,9 +34,8 @@
                         <td>{{ $d->category->category }}</td>
                         <td>{{ $d->title }}</td>
                         <td>{{ $d->type }}</td>
-                        <td><a href="/admin/dashboard/pengumuman/{{ $d->id }}" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="bi bi-eye-fill"></i></a></td>
                         <td><a href="/admin/dashboard/pengumuman/{{ $d->id }}" rel="noopener noreferrer" class="btn btn-warning btn-sm"><i class="bi bi-pen-fill"></i></a></td>
-                        <td><a href="/admin/dashboard/pengumuman/" rel="noopener noreferrer" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill"></i></a></td>
+                        <td><a href="/admin/dashboard/pengumuman/" rel="noopener noreferrer" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus {{ $d->id }}');"><i class="bi bi-trash-fill"></i></a></td>
                     </tr>
                 @endforeach
             </tbody>
