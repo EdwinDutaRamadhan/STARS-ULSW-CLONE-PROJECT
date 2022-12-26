@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Pengumuman;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -23,9 +24,13 @@ class DashboardPengumuman extends Controller
     }
     public function index()
     {
-        return view('admin.pengumuman.index', [
-            'data' => Pengumuman::all()
-        ]);
+        if(auth()->user()->role != 'Mahasiswa'){
+            return view('admin.pengumuman.index', [
+                'data' => Pengumuman::all()
+            ]);
+        }else{
+            abort(404);
+        }
     }
 
 
@@ -36,7 +41,7 @@ class DashboardPengumuman extends Controller
      */
     public function create()
     {
-        return view('admin.pengumuman.add');
+        return view('admin.pengumuman.add',['categories' => Category::all()]);
     }
 
     /**
@@ -47,7 +52,7 @@ class DashboardPengumuman extends Controller
      */
     public function store(Request $request)
     {
-        //
+        @ddd($request);
     }
 
     /**

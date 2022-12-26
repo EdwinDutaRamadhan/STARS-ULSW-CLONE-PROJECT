@@ -24,8 +24,9 @@ Route::get('/home/{id}',[PengumumanController::class, 'show']);
 
 Route::resource('/home/mahasiswa', MahasiswaController::class);
 
-Route::get('/admin/login', [LoginController::class, 'index'])->middleware('guest');
-Route::post('/admin/login', [LoginController::class, 'authenticate']);
+Route::get('/admin/login', [LoginController::class, 'index'])->middleware('guest')->name('admin-login');
+Route::get('/admin/logout', [LoginController::class, 'adminLogout'])->name('admin-logout');
+Route::post('/admin/login', [LoginController::class, 'adminAuthenticate']);
 
 //ADMIN
 Route::resource('/admin/dashboard/pengumuman', DashboardPengumuman::class )->middleware('auth');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 class LoginController extends Controller
 {
     /**
@@ -16,20 +17,33 @@ class LoginController extends Controller
         return view('auth.login-admin');
     }
 
-    public function authenticate(Request $request){
-        //@dd($request);
+    public function adminAuthenticate(Request $request)
+    {
+
         $credentials = $request->validate([
             'nim' => 'required|max:9',
             'password' => 'required'
         ]);
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
-            return redirect()->intended('/admin/dashboard/pengumuman');
+            if (auth()->user()->role != 'Mahasiswa') {
+                return redirect()->intended('/admin/dashboard/pengumuman');
+            } else {
+                Auth::logout();
+                session()->invalidate();
+                session()->regenerateToken();
+            }
         }
+
         return back()->with('login', 'username atau password salah!');
     }
-  
+    public function adminLogout()
+    {
+        Auth::logout();
+        session()->invalidate();
+        session()->regenerateToken();
+        return redirect()->route('admin-login');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -48,7 +62,6 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        
     }
 
     /**
