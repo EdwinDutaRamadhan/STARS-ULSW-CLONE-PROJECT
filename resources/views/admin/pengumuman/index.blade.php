@@ -1,6 +1,14 @@
 @extends('admin.pengumuman.layout.main')
 @section('container')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+
+        @if (session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
         <h1 class="h2">Dashboard</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
@@ -13,7 +21,7 @@
             </button>
         </div>
     </div>
-    
+
     <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
@@ -34,8 +42,11 @@
                         <td>{{ $d->category->category }}</td>
                         <td>{{ $d->title }}</td>
                         <td>{{ $d->type }}</td>
-                        <td><a href="/admin/dashboard/pengumuman/{{ $d->id }}" rel="noopener noreferrer" class="btn btn-warning btn-sm"><i class="bi bi-pen-fill"></i></a></td>
-                        <td><a href="/admin/dashboard/pengumuman/" rel="noopener noreferrer" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus {{ $d->id }}');"><i class="bi bi-trash-fill"></i></a></td>
+                        <td><a href="/admin/dashboard/pengumuman/{{ $d->id }}" rel="noopener noreferrer"
+                                class="btn btn-warning btn-sm"><i class="bi bi-pen-fill"></i></a></td>
+                        <td><a href="/admin/dashboard/pengumuman/" rel="noopener noreferrer" class="btn btn-danger btn-sm"
+                                onclick="return confirm('Apakah anda yakin ingin menghapus {{ $d->id }}');"><i
+                                    class="bi bi-trash-fill"></i></a></td>
                     </tr>
                 @endforeach
             </tbody>

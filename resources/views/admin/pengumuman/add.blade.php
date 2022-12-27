@@ -7,29 +7,34 @@
             <div class="row g-3">
                 <div class="col-12">
                     <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="title" placeholder="Title" value="" name="title" required>
-                    <div class="invalid-feedback">
-                        Valid first name is required.
-                    </div>
+                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" placeholder="Title" value="" name="title" required>
+                    @error('title')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="col-12">
                     <label for="subtitle" class="form-label">Subtitle</label>
-                    <input type="text" class="form-control" id="subtitle" placeholder="Subtitle" value="" name="subtitle" readonly>
-                    <div class="invalid-feedback">
-                        Valid first name is required.
-                    </div>
-                    
+                    <input type="text" class="form-control @error('subtitle') is-invalid @enderror" id="subtitle" placeholder="Subtitle" value="" name="subtitle" readonly>
+                    @error('subtitle')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="col-12">
                     <label for="type" class="form-label">Type</label>
-                    <input type="text" class="form-control" id="type" placeholder="Type" value="" name="type" required>
-                    <div class="invalid-feedback">
-                        Valid first name is required.
-                    </div>
+                    <input type="text" class="form-control @error('type') is-invalid @enderror" id="type" placeholder="Type" value="" name="type" required>
+                    @error('type')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="my-2">
-                    <label for="category" class="form-label">Type</label>
-                    <select id="category" class="form-select" name="category_id">
+                    <label for="category" class="form-label">Category</label>
+                    <select id="category" class="form-select @error('category_id') is-invalid @enderror" name="category_id">
                         @foreach ($categories as $c)
                         <option value="{{ $c->id }}">{{ $c->category }}</option>
                         @endforeach
@@ -37,14 +42,24 @@
                 </div>
                 <div class="my-2">
                     <label for="image" class="form-label">Default file input example</label>
-                    <input class="form-control" type="file" id="image" name="image">
+                    <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image">
+                    @error('image')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                   </div>
                 <div action="" class="my-2">
                     <input id="description" value="" type="hidden" name="description" required>
                     <trix-editor input="description"></trix-editor>
+                    @error('description')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 
-                <button class="w-100 btn btn-primary btn" type="submit">Simpan</button>
+                <button class="w-100 btn btn-primary btn mb-4" type="submit">Simpan</button>
         </form>
     </div>
     <script>

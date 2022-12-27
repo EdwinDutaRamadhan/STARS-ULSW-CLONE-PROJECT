@@ -2,7 +2,7 @@
     <div class="position-sticky pt-3">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link text-center {{ Request::is('admin/dashboard/pengumuman')? 'active' : '' }}" href="/admin/dashboard/pengumuman">
+                <a class="nav-link text-center {{ Request::is('admin/dashboard/pengumuman*')? 'active' : '' }}" href="/admin/dashboard/pengumuman">
                     <i class="bi bi-receipt-cutoff"></i>
                     Pengumuman
                 </a>

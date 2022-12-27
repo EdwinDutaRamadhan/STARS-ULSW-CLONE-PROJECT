@@ -17,12 +17,12 @@
                     @foreach ($data as $d)
                         <div class="col">
                             <div class="card shadow-sm">
-                                <img src="{{ $d->image }}" alt="not found" class="img-fluid">
+                                <img src="{{ asset('storage/'.$d->image) }}" alt="not found" class="img-fluid">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between">
                                         <p class="card-text text-muted">{{ $d->tanggal }}</b></p>
                                         <p class="card-text text-muted"></b></p>
-                                        <p class="card-text text-muted">{{ $d->category }}</b></p>
+                                        <p class="card-text text-muted">{{ $d->category->category }}</b></p>
                                     </div>
 
                                     <h5 class="card-text">{{ $d->title }}</h5>

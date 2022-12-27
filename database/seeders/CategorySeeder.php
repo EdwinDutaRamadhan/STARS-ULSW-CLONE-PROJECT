@@ -15,7 +15,7 @@ class CategorySeeder extends Seeder
     public function run()
     {
         Category::create([
-            'category' => 'Beasiswa'
+            'category' => 'Beasiswa',
         ]);
         Category::create([
             'category' => 'Dispensasi'

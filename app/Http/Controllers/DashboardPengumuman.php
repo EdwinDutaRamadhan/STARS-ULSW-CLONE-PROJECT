@@ -52,7 +52,18 @@ class DashboardPengumuman extends Controller
      */
     public function store(Request $request)
     {
-        @ddd($request);
+        $validatedData = $request->validate([
+            'title' => 'required|max:200',
+            'subtitle' => 'required|max:100',
+            'category_id' => 'required',
+            'type' => 'required',
+            'description' => 'required',
+            'image' => 'required|file|max:4096'            
+        ]);
+        $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['image'] = $request->file('image')->store('pengumuman-image');
+        Pengumuman::create($validatedData);
+        return redirect()->route('pengumuman.index')->with('success', 'Insert pengumuman'.$request->title.' berhasil');
     }
 
     /**

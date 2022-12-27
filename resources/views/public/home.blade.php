@@ -17,12 +17,12 @@
                     @foreach ($data as $d)
                         <div class="col">
                             <div class="card shadow-sm">
-                                <img src="{{ $d->image }}" alt="not found" class="img-fluid">
+                                <img src={{ asset('storage/'.$d->image) }}" alt="not found" class="img-fluid">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between">
                                         <p class="card-text text-muted">{{ App\Http\Controllers\PengumumanController::getDateSingle( $d->created_at) }}</b></p>
                                         <p class="card-text text-muted"></b></p>
-                                        <a href="/home/category/{{ $d->category }}" class="card-text text-muted text-decoration-none">{{ $d->category }}</b></a>
+                                        <a href="/home/category/{{ $d->category->category }}" class="card-text text-muted text-decoration-none">{{ $d->category->category }}</b></a>
                                     </div>
 
                                     <h5 class="card-text">{{ $d->title }}</h5>

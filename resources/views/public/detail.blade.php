@@ -8,13 +8,13 @@
         @include('partials.home.banner')
         @include('partials.nav-home')
         <div class=" mt-5">
-            <img src="{{ $data->image }}" alt="not found" class="img-fluid w-100">
+            <img src="{{ asset('storage/'.$d->image) }}" alt="not found" class="img-fluid w-100">
         </div>
 
         <div class="container mt-2">
             <div class="row d-flex justify-content-start">
                 <div class="m-1 col-sm-3" style="min-width: 180px;">
-                    <h1><b class="text-primary">{{ $data->category }}</b></h1>
+                    <h1><b class="text-primary">{{ $data->category->category }}</b></h1>
                 </div>
                 <div class="m-1 col-sm-3 justify-content-start">
                     <table class="m-2">
