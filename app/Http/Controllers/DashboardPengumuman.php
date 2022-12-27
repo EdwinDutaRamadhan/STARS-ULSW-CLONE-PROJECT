@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Pengumuman;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardPengumuman extends Controller
 {
@@ -24,11 +25,11 @@ class DashboardPengumuman extends Controller
     }
     public function index()
     {
-        if(auth()->user()->role != 'Mahasiswa'){
+        if (auth()->user()->role != 'Mahasiswa') {
             return view('admin.pengumuman.index', [
                 'data' => Pengumuman::all()
             ]);
-        }else{
+        } else {
             abort(404);
         }
     }
@@ -41,7 +42,7 @@ class DashboardPengumuman extends Controller
      */
     public function create()
     {
-        return view('admin.pengumuman.add',['categories' => Category::all()]);
+        return view('admin.pengumuman.add', ['categories' => Category::all()]);
     }
 
     /**
@@ -58,12 +59,12 @@ class DashboardPengumuman extends Controller
             'category_id' => 'required',
             'type' => 'required',
             'description' => 'required',
-            'image' => 'required|file|max:4096'            
+            'image' => 'required|file|max:4096'
         ]);
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['image'] = $request->file('image')->store('pengumuman-image');
         Pengumuman::create($validatedData);
-        return redirect()->route('pengumuman.index')->with('success', 'Insert pengumuman'.$request->title.' berhasil');
+        return redirect()->route('pengumuman.index')->with('success', 'Insert pengumuman ' . $request->title . ' berhasil!');
     }
 
     /**
@@ -74,14 +75,14 @@ class DashboardPengumuman extends Controller
      */
     public function show(Pengumuman $pengumuman)
     {
-        
-       if(auth()->user()->role != 'Mahasiswa'){
-        return view('admin.pengumuman.detail', [
-            'data' => Pengumuman::find($pengumuman->id)
-        ]);
-       }else{
-        return redirect('admin/dashboard/pengumuman');
-       }
+
+        //    if(auth()->user()->role != 'Mahasiswa'){
+        //     return view('admin.pengumuman.detail', [
+        //         'data' => Pengumuman::find($pengumuman->id)
+        //     ]);
+        //    }else{
+        //     return redirect()->route('admin.pengumuman');
+        //    }
     }
 
     /**
@@ -92,7 +93,14 @@ class DashboardPengumuman extends Controller
      */
     public function edit(Pengumuman $pengumuman)
     {
-        //
+        if (auth()->user()->role != 'Mahasiswa') {
+            return view('admin.pengumuman.edit', [
+                'data' => Pengumuman::find($pengumuman->id),
+                'categories' => Category::all()
+            ]);
+        } else {
+            return redirect()->route('pengumuman.index');
+        }
     }
 
     /**
@@ -104,7 +112,25 @@ class DashboardPengumuman extends Controller
      */
     public function update(Request $request, Pengumuman $pengumuman)
     {
-        //
+        $rules = [
+            'title' => 'required|max:200',
+            'subtitle' => 'required|max:100',
+            'category_id' => 'required',
+            'type' => 'required',
+            'description' => 'required',
+        ];
+        if($request->file('image')!= null){
+            $rules['image'] =  'required|file|max:4096';
+        }
+        $validatedData = $request->validate($rules);
+        $validatedData['user_id'] = auth()->user()->id;
+        if($request->file('image')!= null){
+            Storage::delete($pengumuman->image);
+            $validatedData['image'] = $request->file('image')->store('pengumuman-image');
+        }
+        
+        Pengumuman::where('id', $pengumuman->id)->update($validatedData);
+        return redirect()->route('pengumuman.index')->with('warning', 'Update pengumuman ' . $pengumuman->title . ' berhasil!');
     }
 
     /**
@@ -115,6 +141,8 @@ class DashboardPengumuman extends Controller
      */
     public function destroy(Pengumuman $pengumuman)
     {
-        //
+        Pengumuman::destroy($pengumuman->id);
+        Storage::delete($pengumuman->image);
+        return redirect()->route('pengumuman.index')->with('danger', 'Delete pengumuman dengan ID ' . $pengumuman->id . ' berhasil');
     }
 }

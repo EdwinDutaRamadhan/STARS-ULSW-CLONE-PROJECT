@@ -3,9 +3,46 @@
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 
         @if (session()->has('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+                <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header bg-warning">
+                        <img src="https://stars.uksw.edu/public/images/logo.png" class="img-fluid rounded me-2 w-25" alt="...">
+                        <strong class="me-auto"></strong>
+                        <small>Just now</small>
+                        <button id="liveToastClose" type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        {{ session('success') }}
+                    </div>
+                </div>
+            </div>
+        @elseif(session()->has('danger'))
+            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+                <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header bg-warning">
+                        <img src="https://stars.uksw.edu/public/images/logo.png" class="img-fluid rounded me-2 w-25" alt="...">
+                        <strong class="me-auto"></strong>
+                        <small>Just now</small>
+                        <button id="liveToastClose" type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        {{ session('danger') }}
+                    </div>
+                </div>
+            </div>
+        @elseif(session()->has('warning'))
+            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+                <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header bg-warning">
+                        <img src="https://stars.uksw.edu/public/images/logo.png" class="img-fluid rounded me-2 w-25" alt="...">
+                        <strong class="me-auto"></strong>
+                        <small>Just now</small>
+                        <button id="liveToastClose" type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        {{ session('warning') }}
+                    </div>
+                </div>
             </div>
         @endif
 
@@ -42,14 +79,21 @@
                         <td>{{ $d->category->category }}</td>
                         <td>{{ $d->title }}</td>
                         <td>{{ $d->type }}</td>
-                        <td><a href="/admin/dashboard/pengumuman/{{ $d->id }}" rel="noopener noreferrer"
+                        <td><a href="/admin/dashboard/pengumuman/{{ $d->id }}/edit" rel="noopener noreferrer"
                                 class="btn btn-warning btn-sm"><i class="bi bi-pen-fill"></i></a></td>
-                        <td><a href="/admin/dashboard/pengumuman/" rel="noopener noreferrer" class="btn btn-danger btn-sm"
-                                onclick="return confirm('Apakah anda yakin ingin menghapus {{ $d->id }}');"><i
-                                    class="bi bi-trash-fill"></i></a></td>
+                        <td>
+                            <form action="/admin/dashboard/pengumuman/{{ $d->id }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger btn-sm" type="submit"
+                                    onclick="return confirm('Apakah anda yakin ingin menghapus {{ $d->title }}?');"><i
+                                        class="bi bi-trash-fill"></i></button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
+    
 @endsection

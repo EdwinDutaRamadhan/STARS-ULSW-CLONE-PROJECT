@@ -26,7 +26,7 @@
                                     </div>
 
                                     <h5 class="card-text">{{ $d->title }}</h5>
-                                    <p class="card-text text-muted">{{ $d->subtitle }}</p>
+                                    <p class="card-text text-muted">{{ $d->type }}</p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
                                             <a href="/home/{{ Crypt::encrypt($d->id) }}" class="btn btn-sm btn-primary">Lihat
