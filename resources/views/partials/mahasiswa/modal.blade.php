@@ -10,40 +10,40 @@
                 <form action="" method="post">
                     @csrf
                     <div class="mb-2">
-                        <label for="name">Nama</label>
-                        <input type="text" name="name" id="name" class="form-control mt-2"
-                            placeholder="Nama" value="{{ $profile->name }}">
+                        <label for="profileName">Nama</label>
+                        <input type="text" name="name" id="profileName" class="form-control mt-2"
+                            placeholder="Nama" value="">
                     </div>
                     <div class="mb-2">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" id="email" class="form-control mt-2"
-                            placeholder="Email" value="{{ $profile->email }}">
+                        <label for="profileEmail">Email</label>
+                        <input type="email" name="email" id="profileEmail" class="form-control mt-2"
+                            placeholder="Email" value="">
                     </div>
                     <div class="mb-2">
-                        <label for="telp">TLP</label>
-                        <input type="text" name="telp" id="telp" class="form-control mt-2"
-                            placeholder="No.HP / TLP" value="{{ $profile->telp }}">
+                        <label for="profileTelp">TLP</label>
+                        <input type="text" name="telp" id="profileTelp" class="form-control mt-2"
+                            placeholder="No.HP / TLP" value="">
                     </div>
                     <div class="row mb-2">
                         <div class="col-4">
-                            <label for="bank">Bank</label>
-                            <input type="text" name="bank" id="bank" class="form-control mt-2"
-                                placeholder="Jenis Bank" value="{{ $profile->bank }}">
+                            <label for="profileBank">Bank</label>
+                            <input type="text" name="bank" id="profileBank" class="form-control mt-2"
+                                placeholder="Jenis Bank" value="">
                         </div>
                         <div class="col-8">
-                            <label for="norek">No. Rek</label>
-                            <input type="text" name="norek" id="norek" class="form-control mt-2"
-                                placeholder="No. Rek" value="{{ $profile->norek }}">
+                            <label for="profileNorek">No. Rek</label>
+                            <input type="text" name="norek" id="profileNorek" class="form-control mt-2"
+                                placeholder="No. Rek" value="">
                         </div>
                     </div>
                     <div class="mb-2">
-                        <label for="pemilik">Nama Pemilik Rekening</label>
-                        <input type="text" name="pemilik" id="pemilik" class="form-control mt-2"
-                            placeholder="Nama Pemilik Rekening" value="{{ $profile->pemilik }}">
+                        <label for="profilePemilik">Nama Pemilik Rekening</label>
+                        <input type="text" name="pemilik" id="profilePemilik" class="form-control mt-2"
+                            placeholder="Nama Pemilik Rekening" value="">
                     </div>
                     <div class="mb-2">
-                        <label for="progdi">Program Studi</label>
-                        <input type="text" name="progdi" id="progdi" class="form-control mt-2"readonly value="{{ $profile->progdi }}">
+                        <label for="profileProgdi">Program Studi</label>
+                        <input type="text" name="progdi" id="profileProgdi" class="form-control mt-2"readonly value="">
                     </div>
                 </form>
             </div>

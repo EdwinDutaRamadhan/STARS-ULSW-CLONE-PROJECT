@@ -26,7 +26,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link ms-2 " data-bs-toggle="modal" data-bs-target="#profile"
-                        href="profile">Profile</a>
+                        href="profile" id="profileAccount">Profile</a>
                 </li>
             </ul>
             

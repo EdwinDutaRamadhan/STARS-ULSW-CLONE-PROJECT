@@ -26,4 +26,20 @@ $(function(){
             }
         });
     });
+    $('#profileAccount').on('click', () =>{
+        $.ajax({
+            url : 'http://stars.test/home/mahasiswa/profile',
+            method : 'POST',
+            dataType : 'json',
+            success: function(data){
+                $('#profileName').val(data.name);
+                $('#profileEmail').val(data.email);
+                $('#profileTelp').val(data.telp);
+                $('#profileBank').val(data.bank);
+                $('#profileNorek').val(data.norek);
+                $('#profilePemilik').val(data.pemilik);
+                $('#profileProgdi').val(data.progdi);
+            }
+        });
+    });
 });

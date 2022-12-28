@@ -19,7 +19,7 @@
             <?php $no++; ?>
                 <tr class="text-center text-muted">
                     <td>{{ $no }}</td>
-                    <td><a href="{{ $d->link }}"><i class="btn btn-primary btn-sm bi bi-eye-fill"></i></a></td>
+                    <td><a href="{{ $d->link }}" target="_blank"><i class="btn btn-primary btn-sm bi bi-eye-fill"></i></a></td>
                     <td>{{ $d->catatan }}</td>
                     <td>{{ ($d->valid == 1)? "Valid" : "Invalid"; }}</td>
                     <td>{{ $d->poin }}</td>

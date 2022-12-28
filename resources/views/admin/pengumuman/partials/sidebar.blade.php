@@ -8,7 +8,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-center {{ Request::is('admin/dashboard/mahasiswa')? 'active' : '' }}" href="/admin/dashboard/mahasiswa">
+                <a class="nav-link text-center {{ Request::is('admin/dashboard/mahasiswa*')? 'active' : '' }}" href="/admin/dashboard/mahasiswa">
                     <i class="bi bi-people-fill"></i>
                     Mahasiswa
                 </a>

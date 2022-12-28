@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Beasiswa;
-use App\Models\Category;
+use App\Models\UserInfo;
 use App\Models\Dispensasi;
 use App\Models\KKM;
 use App\Models\PKM;
@@ -196,7 +196,9 @@ class MahasiswaController extends Controller
     public function getBeasiswa(Request $request){
         //return response()->json(array('msg'=> 'bisa'), 200);
         $data = Beasiswa::find($request->id);
-
         return response()->json($data);
+    }
+    public function getProfile(){
+        return response()->json(UserInfo::find(auth()->user()->id));
     }
 }
