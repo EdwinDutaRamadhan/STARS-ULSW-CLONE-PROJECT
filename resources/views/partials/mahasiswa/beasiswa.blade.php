@@ -18,13 +18,13 @@
                     <td>{{ $no }}</td>
                     <td>
                         <div class="btn-group dropend">
-                            <button type="button" class="btn btn-primary btn-sm dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button type="button" class="btn btn-primary btn-sm dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" data-id="{{ $d->id }}" id="uploadBerkasBtn">
                                 <i class="bi bi-gear-fill"></i>
                               <span class="visually-hidden">Toggle Dropright</span>
                             </button>
                             <ul class="dropdown-menu ">
-                                <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#uploadBerkas">Upload Berkas</button></li>
-                                <li><button class="dropdown-item" >Detail Berkas</button></li>
+                                <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#uploadBerkas" >Upload Berkas</button></li>
+                                <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#detailBerkas">Detail Berkas</button></li>
                             </ul>
                           </div>
                     </td>
@@ -48,15 +48,53 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="uploadBerkasTitle">Modal title</h5>
+          <h3 class="modal-title text-muted" id="uploadBerkasTitle">Modal title</h3>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          ...
+          <div class="input-group">
+            <input type="text" class="form-control is-valid" placeholder="Link Google Drive" value="" id="uploadBerkasLink">
+            <button class="btn btn-outline-success" type="button">Simpan</button>
+            <button class="btn btn-outline-success" type="button">view</button>
+          </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Modal -->
+<div class="modal fade" id="detailBerkas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title text-muted" id="detailBerkasTitle">Modal title</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-4">
+              <table>
+                <tr><td class="text-muted">Nama Beasiswa</td></tr>
+                <tr><td class="text-muted">Status</td></tr>
+                <tr><td class="text-muted">Skor Wawancara</td></tr>
+                <tr><td class="text-muted">Skor Berkas</td></tr>
+                <tr><td class="text-muted">Imbalan</td></tr>
+              </table>
+            </div>
+            <div class="col-md-8">
+              <table>
+                <tr><td class="text-muted" id="detailBerkasParagraph">Nama Beasiswa</td></tr>
+                <tr><td class="text-muted" id="detailBerkasStatus">Status</td></tr>
+                <tr><td class="text-muted">100.00 %</td></tr>
+                <tr><td class="text-muted">100.00 %</td></tr>
+                <tr><td class="text-muted">Potongan Maksimal 8 SKS</td></tr>
+              </table>
+              
+              
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -22,6 +22,7 @@ Route::get('/home',[PengumumanController::class, 'home']);
 Route::get('/home/category/{category}',[PengumumanController::class, 'category']);
 Route::get('/home/{id}',[PengumumanController::class, 'show']);
 
+Route::post('/home/mahasiswa/beasiswa', [MahasiswaController::class, 'getBeasiswa']);
 Route::resource('/home/mahasiswa', MahasiswaController::class);
 
 Route::get('/admin/login', [LoginController::class, 'index'])->middleware('guest')->name('admin-login');
