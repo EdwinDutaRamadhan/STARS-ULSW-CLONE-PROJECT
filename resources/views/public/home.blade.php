@@ -17,7 +17,7 @@
                     @foreach ($data as $d)
                         <div class="col">
                             <div class="card shadow-sm">
-                                <img src={{ asset('storage/'.$d->image) }}" alt="not found" class="img-fluid">
+                                <img src="storage/{{ $d->image }}" alt="not found" class="img-fluid">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between">
                                         <p class="card-text text-muted">{{ App\Http\Controllers\PengumumanController::getDateSingle( $d->created_at) }}</b></p>

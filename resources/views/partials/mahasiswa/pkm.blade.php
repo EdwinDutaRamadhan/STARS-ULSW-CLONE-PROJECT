@@ -5,8 +5,8 @@
                 <th>No</th>
                 <th>#</th>
                 <th>Revisi</th>
-                <th>Valid. Pembimbing</th>
-                <th>Valid. KorBidKem</th>
+                <th><div class="hideextra">Valid. Pembimbing</div></th>
+                <th><div class="hideextra">Valid. KorBidKem</div></th>
                 <th>ID</th>
                 <th>Judul</th>
                 <th>Kegiatan</th>
@@ -17,12 +17,12 @@
                 <th>Status</th>
                 <th>Pembimbing</th>
                 <th>Ketua</th>
-                <th>Anggota 1</th>
-                <th>Anggota 2</th>
-                <th>Anggota 3</th>
-                <th>Anggota 4</th>
+                <th><div class="hideextra">Anggota 1</div></th>
+                <th><div class="hideextra">Anggota 2</div></th>
+                <th><div class="hideextra">Anggota 3</div></th>
+                <th><div class="hideextra">Anggota 4</div></th>
                 <th>Proposal</th>
-                <th>Berkas PKM</th>
+                <th><div class="hideextra">Berkas PKM</div></th>
             </tr>
         </thead>
         <tbody>

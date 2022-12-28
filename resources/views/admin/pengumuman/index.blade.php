@@ -50,12 +50,7 @@
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
                 <a href="{{ route('pengumuman.create') }}" class="btn btn-sm btn-outline-secondary">Tambah Pengumuman</a>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
             </div>
-            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                <span data-feather="calendar"></span>
-                This week
-            </button>
         </div>
     </div>
 

@@ -10,7 +10,7 @@
                 <th>Nama Kegiatan</th>
                 <th>Rumpun</th>
                 <th>Nama Jenis Rumpun</th>
-                <th>Kelompok Kegiatan</th>
+                <th><div class="hideextra">Kelompok Kegiatan</div></th>
             </tr>
         </thead>
         <tbody>
@@ -23,10 +23,10 @@
                     <td>{{ $d->catatan }}</td>
                     <td>{{ ($d->valid == 1)? "Valid" : "Invalid"; }}</td>
                     <td>{{ $d->poin }}</td>
-                    <td>{{ $d->kegiatan }}</td>
-                    <td>{{ $d->rumpun }}</td>
-                    <td>{{ $d->jenis }}</td>
-                    <td>{{ $d->kelompok }}</td>
+                    <td><div class="hideextra">{{ $d->kegiatan }}</div></td>
+                    <td><div class="hideextra">{{ $d->rumpun }}</div></td>
+                    <td><div class="hideextra">{{ $d->jenis }}</div></td>
+                    <td><div class="hideextra">{{ $d->kelompok }}</div></td>
                 </tr>
                 
             @endforeach

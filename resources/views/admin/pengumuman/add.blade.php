@@ -1,7 +1,11 @@
 @extends('admin.pengumuman.layout.main')
 @section('container')
     <div class="col-md-7 col-lg-8">
-        <h4 class="my-3">Tambah Pengumuman</h4>
+        <div class="d-flex justify-content-between mt-2">
+            <a class="text-decoration-none text-dark" href="{{ route('pengumuman.index') }}"><i class="bi bi-box-arrow-in-left"></i>Back</a>
+            <h4 class="">Tambah Pengumuman</h4>
+            <p></p>
+        </div>
         <form class="needs-validation" action="{{ route('pengumuman.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row g-3">
@@ -40,7 +44,7 @@
                     <select id="category" class="form-select @error('category_id') is-invalid @enderror"
                         name="category_id">
                         @foreach ($categories as $c)
-                            @if (old('category_id') == $c->category_id)
+                            @if (old('category_id') == $c->id)
                                 <option value="{{ $c->id }}" selected>{{ $c->category }}</option>
                             @else
                                 <option value="{{ $c->id }}">{{ $c->category }}</option>
@@ -49,9 +53,9 @@
                     </select>
                 </div>
                 <div class="my-2">
-                    <label for="image" class="form-label">Default file input example</label>
-                    <input class="form-control @error('image') is-invalid @enderror" type="file" id="image"
-                        name="image">
+                    <img class="img-fluid w-25 d-flex" id="imagePreview">
+                    <label for="image-file" class="form-label">Pengumuman image file</label>
+                    <input class="form-control @error('image') is-invalid @enderror" type="file" id="imageFile" name="image" >
                     @error('image')
                         <div class="invalid-feedback">
                             {{ $message }}
