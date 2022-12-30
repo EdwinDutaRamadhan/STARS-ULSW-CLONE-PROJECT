@@ -31,6 +31,8 @@ $(function () {
             dataType : 'json',
             success: (data) => {
                 $('.modal-footer-mahasiswa').hide();
+                $('#profileDetailLabel').text('Account Details');
+                $('input').prop('readonly', true);
                 $('#profileDetailName').val(data.name);
                 $('#profileDetailEmail').val(data.email);
                 $('#profileDetailNIM').val(data.nim);
@@ -39,6 +41,43 @@ $(function () {
                 $('#profileDetailNorek').val(data.norek);
                 $('#profileDetailPemilik').val(data.pemilik);
                 $('#profileDetailProgdi').val(data.progdi);
+            }
+        });
+    });
+    $('.profileEdit').on('click', function() {
+        const id = $(this).data('id');
+
+        $.ajax({
+            url : 'http://stars.test/admin/dashboard/mahasiswa/detail',
+            data : {id : id},
+            method : 'POST',
+            dataType : 'json',
+            success: (data) => {
+                $('input').prop('readonly', false);
+                $('#profileDetailLabel').text('Account Edit');
+                $('#profileDetailName').val(data.name);
+                $('#profileDetailEmail').val(data.email);
+                $('#profileDetailNIM').val(data.nim);
+                $('#profileDetailTelp').val(data.telp);
+                $('#profileDetailBank').val(data.bank);
+                $('#profileDetailNorek').val(data.norek);
+                $('#profileDetailPemilik').val(data.pemilik);
+                $('#profileDetailProgdi').val(data.progdi);
+            }
+        });
+    });
+    $('.profileDelete').on('click', function() {
+        const id = $(this).data('id');
+        const action = '/admin/dashboard/mahasiswa/' + id;
+        $.ajax({
+            url : 'http://stars.test/admin/dashboard/mahasiswa/detail',
+            data : {id : id},
+            method : 'POST',
+            dataType : 'json',
+            success: (data) => {
+                $('input').prop('readonly', false);
+                $('#profileDeleteLabel').text(data.name);
+                $('#deleteFormModal').attr('action', action);
             }
         });
     });

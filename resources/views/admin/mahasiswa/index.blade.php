@@ -74,18 +74,9 @@
                         <td>{{ $d->user->nim }}</td>
                         <td>{{ $d->email }}</td>
                         <td>{{ $d->progdi }}</td>
-                        <td><button type="button" class="btn btn-sm btn-info profileDetail" data-id="{{ $d->id }}" data-bs-toggle="modal" data-bs-target="#profileDetail"><i class="bi bi-eye"></i></button></td>
-                        <td><a href="/admin/dashboard/mahasiswa/{{ $d->id }}/edit" rel="noopener noreferrer"
-                                class="btn btn-warning btn-sm"><i class="bi bi-pen-fill"></i></a></td>
-                        <td>
-                            <form action="/admin/dashboard/mahasiswa/{{ $d->id }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-danger btn-sm" type="submit"
-                                    onclick="return confirm('Apakah anda yakin ingin menghapus {{ $d->title }}?');"><i
-                                        class="bi bi-trash-fill"></i></button>
-                            </form>
-                        </td>
+                        <td class="text-center"><button type="button" class="btn btn-sm ms-1 btn-info profileDetail" data-id="{{ $d->id }}" data-bs-toggle="modal" data-bs-target="#profileDetail"><i class="bi bi-eye"></i></button>
+                        <button type="button" class="btn btn-sm ms-1 btn-warning profileEdit" data-id="{{ $d->id }}" data-bs-toggle="modal" data-bs-target="#profileDetail"><i class="bi bi-pen-fill"></i></button>
+                        <button type="button" class="btn btn-sm ms-1 btn-danger profileDelete" data-id="{{ $d->id }}" data-bs-toggle="modal" data-bs-target="#profileDelete"><i class="bi bi-trash-fill"></i></button><td>
                     </tr>
                 @endforeach
             </tbody>
@@ -93,4 +84,5 @@
         {{ $data->links() }}
     </div>
     @include('admin.mahasiswa.partials.mahasiswa-modal')
+    @include('admin.mahasiswa.partials.delete-modal')
 @endsection

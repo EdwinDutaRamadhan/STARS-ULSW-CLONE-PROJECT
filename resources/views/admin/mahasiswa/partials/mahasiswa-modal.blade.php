@@ -12,41 +12,41 @@
                     <div class="mb-2">
                         <label for="profileDetailName">Nama</label>
                         <input type="text" name="name" id="profileDetailName" class="form-control mt-2"
-                            placeholder="Nama" value="">
+                            placeholder="Nama" value="" readonly>
                     </div>
                     <div class="row mb-2">
                         <div class="col-6">
                             <label for="profileDetailEmail">Email</label>
                             <input type="email" name="email" id="profileDetailEmail" class="form-control mt-2"
-                                placeholder="Email" value="">
+                                placeholder="Email" value="" readonly>
                         </div>
                         <div class="col-6">
                             <label for="profileDetailNIM">NIM</label>
                             <input type="text" name="nim" id="profileDetailNIM" class="form-control mt-2"
-                                placeholder="NIM" value="">
+                                placeholder="NIM" value="" readonly>
                         </div>
                     </div>
                     <div class="mb-2">
                         <label for="profileDetailTelp">TLP</label>
                         <input type="text" name="telp" id="profileDetailTelp" class="form-control mt-2"
-                            placeholder="No.HP / TLP" value="">
+                            placeholder="No.HP / TLP" value="" readonly>
                     </div>
                     <div class="row mb-2">
                         <div class="col-4">
                             <label for="profileDetailBank">Bank</label>
                             <input type="text" name="bank" id="profileDetailBank" class="form-control mt-2"
-                                placeholder="Jenis Bank" value="">
+                                placeholder="Jenis Bank" value="" readonly>
                         </div>
                         <div class="col-8">
                             <label for="profileDetailNorek">No. Rek</label>
                             <input type="text" name="norek" id="profileDetailNorek" class="form-control mt-2"
-                                placeholder="No. Rek" value="">
+                                placeholder="No. Rek" value="" readonly>
                         </div>
                     </div>
                     <div class="mb-2">
                         <label for="profileDetailPemilik">Nama Pemilik Rekening</label>
                         <input type="text" name="pemilik" id="profileDetailPemilik" class="form-control mt-2"
-                            placeholder="Nama Pemilik Rekening" value="">
+                            placeholder="Nama Pemilik Rekening" value="" readonly>
                     </div>
                     <div class="mb-2">
                         <label for="profileDetailProgdi">Program Studi</label>

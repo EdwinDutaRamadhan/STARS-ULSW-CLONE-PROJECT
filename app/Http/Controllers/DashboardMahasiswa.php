@@ -82,9 +82,11 @@ class DashboardMahasiswa extends Controller
      * @param  \App\Models\Mahasiswa  $mahasiswa
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mahasiswa $mahasiswa)
+    public function destroy(User $mahasiswa)
     {
-        //
+        User::destroy($mahasiswa->id);
+        UserInfo::destroy($mahasiswa->id);
+        return redirect()->route('mahasiswa.index')->with('danger', 'Delete mahasiswa dengan nama ' . $mahasiswa->name . ' berhasil');
     }
 
     public function getProfile(Request $request){
